@@ -1,11 +1,4 @@
-resource "aws_lambda_function" "html_lambda" {
-  filename         = data.archive_file.lambda_package.output_path
-  function_name    = "myLambdaFunction"
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "sub.lambda_handler"
-  runtime = "python3.9"
-  source_code_hash = data.archive_file.lambda_package.output_base64sha256
-}
+
 
 resource "aws_iam_role" "lambda_role" {
   name = "lambda-role"
@@ -27,6 +20,15 @@ resource "aws_iam_role" "lambda_role" {
 resource "aws_iam_role_policy_attachment" "lambda_basic" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
   role       = aws_iam_role.lambda_role.name
+}
+
+resource "aws_lambda_function" "html_lambda" {
+  filename         = data.archive_file.lambda_package.output_path
+  function_name    = "myLambdaFunction"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "sub.lambda_handler"
+  runtime = "python3.9"
+  source_code_hash = data.archive_file.lambda_package.output_base64sha256
 }
 
 resource "aws_lambda_permission" "apigw_lambda" {
