@@ -18,8 +18,7 @@ resource "aws_api_gateway_resource" "sub" {
 resource "aws_api_gateway_method" "sub" {
   rest_api_id = aws_api_gateway_rest_api.my_api.id
   resource_id = aws_api_gateway_resource.sub.id
-  http_method = "POST"
-
+  http_method = "GET"
   authorization = "NONE"
 }
 
@@ -142,8 +141,7 @@ resource "aws_api_gateway_resource" "add" {
 resource "aws_api_gateway_method" "add" {
   rest_api_id = aws_api_gateway_rest_api.my_api.id
   resource_id = aws_api_gateway_resource.add.id
-  http_method = "POST"
-
+  http_method = "GET"
   authorization = "NONE"
 }
 
@@ -264,7 +262,7 @@ resource "aws_api_gateway_resource" "mul" {
 resource "aws_api_gateway_method" "mul" {
   rest_api_id = aws_api_gateway_rest_api.my_api.id
   resource_id = aws_api_gateway_resource.mul.id
-  http_method = "POST"
+  http_method = "GET"
 
   authorization = "NONE"
 }
@@ -395,7 +393,7 @@ resource "aws_api_gateway_resource" "div" {
 resource "aws_api_gateway_method" "div" {
   rest_api_id = aws_api_gateway_rest_api.my_api.id
   resource_id = aws_api_gateway_resource.div.id
-  http_method = "POST"
+  http_method = "GET"
 
   authorization = "NONE"
 }
